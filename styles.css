@@ -89,6 +89,13 @@
     color: #153D7D;
 }
 
+#lecture-list ul li:hover>.title {
+    margin-left: 0.5rem;
+    transition: 0.2s ease-in;
+    font-size: 1.05rem;
+    font-weight: bold;
+}
+
 #lecture-list ul li .remove {
     border: 0;
     color: #FFF;
@@ -102,4 +109,9 @@
     background-color: #f93154;
     padding: 0.625rem 1.5rem 0.5rem;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 20%), 0 2px 10px 0 rgb(0 0 0 / 10%);
+}
+
+#lecture-list ul li .remove:hover {
+    background-color: #e22c4a;
+    transition: 0.1s ease-in;
 }
