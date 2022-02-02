@@ -1,107 +1,97 @@
-// const lectures = document.getElementById("lecture-list")
-// const classList = document.getElementsByClassName("li");
-// const classList = document.getElementsByTagName("li");
+const lecturesList = [
+  { title: "Introduction to WEB" },
+  { title: "Introduction to HTML & CSS" },
+  { title: "Git and its best practices" },
+];
 
-// for (let index = 0; index < classList.length; index++) {
-//     const element = classList[index];
-//     console.log(element)
-// }
+const lists = document.querySelector("#lecture-list ul");
 
-// console.log(classList);
-// console.log(Array.from(classList));
+function showLists() {
+  const lisArray = [];
+  lecturesList.forEach((item) => {
+    const li = document.createElement("li");
+    const p = document.createElement("p");
+    const button = document.createElement("button");
 
-// const loopData = Array.from(classList)
-// loopData.forEach((item) =>{
-
-//     console.log(item)
-// })
-
-// querySelector
-// const data = document.querySelectorAll("#lecture-list .title")
-// data.forEach(el => {
-//     // el.innerText = el.innerText + " 2"
-//     el.innerHTML = " <span>title</span>"
-// })
-// console.log(data)
-
-// const element = document.querySelector("#heading");
-// const parentLement = element.parentElement;
-// const siblings = element.previousElementSibling;
-// const siblings = element.nextElementSibling;
-// element.addEventListener("click", function(event){
-//     // console.log(event.target.parentElement)
-
-//     event.target.innerText = "testing click"
-// })
-
-// const addForm  = document.getElementById("anchor")
-
-// addForm.addEventListener("click", function(event){
-//     event.preventDefault()
-// })
-
-const forms = document.forms["lecture-add"];
-
-// console.log(document.forms)
-
-forms.addEventListener("submit", function (event) {
-  event.preventDefault();
-  const inputField = forms.querySelector("input[type='text']");
-
-  const li = document.createElement("li");
-  const p = document.createElement("p");
-  const button = document.createElement("button");
-
-  if (inputField.value) {
-    p.innerText = inputField.value;
+    p.innerText = item.title;
     button.innerText = "remove";
 
-    //   button.className = "remove testt"
-    //   p.classList.add("test");
     p.classList.add("title");
-    //   p.classList.remove("test");
     button.classList.add("remove");
-
-    //   li.appendChild (p);
-    //   li.appendChild(button);
 
     li.append(p, button);
 
-    const lists = document.querySelector("#lecture-list ul");
-    lists.appendChild(li);
+    lisArray.push(li);
+  });
 
-    inputField.value = "";
-  }
-});
-const lists = document.querySelector("#lecture-list ul");
+  lists.replaceChildren(...lisArray);
+}
 
-const lis = document.querySelectorAll("#lecture-list ul li");
-lis.forEach((li) => {
-  li.addEventListener("click", function (event) {
-    alert()
+document.addEventListener("DOMContentLoaded", function (event) {
+  showLists();
+
+  const forms = document.forms["lecture-add"];
+
+  forms.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const inputField = forms.querySelector("input[type='text']");
+    if (inputField.value) {
+      lecturesList.push({
+        title: inputField.value,
+      });
+
+      lists.innerHTML = "";
+
+      showLists();
+
+      inputField.value = "";
+    }
+  });
+
+  const list = document.querySelector("#lecture-list ul");
+
+  list.addEventListener("click", function (event) {
+    if (event.target.className === "remove") {
+      const li = event.target.parentElement;
+      list.removeChild(li);
+    }
   });
 });
 
+// const lists = document.querySelector("#lecture-list ul");
 
+// document.addEventListener("DOMContentLoaded", function (event) {
+//   const forms = document.forms["lecture-add"];
 
-const buttons = document.querySelectorAll("#lecture-list ul li button");
-buttons.forEach((button) => {
-  button.addEventListener("click", function (event) {
-    const li = event.target.parentElement;
+//   forms.addEventListener("submit", function (event) {
+//     event.preventDefault();
+//     const inputField = forms.querySelector("input[type='text']");
 
-    event.stopPropagation()
+//     const li = document.createElement("li");
+//     const p = document.createElement("p");
+//     const button = document.createElement("button");
 
-    lists.removeChild(li);
+//     if (inputField.value) {
+//       p.innerText = inputField.value;
+//       button.innerText = "remove";
+//       p.classList.add("title");
+//       button.classList.add("remove");
+//       li.append(p, button);
 
-    
-  });
-});
+//       const lists = document.querySelector("#lecture-list ul");
+//       lists.appendChild(li);
 
-// const list = document.querySelector("#lecture-list ul");
+//       inputField.value = "";
+//     }
+//   });
 
-// list.addEventListener("click", function (event) {
-//   if (event.target.className === "remove") {
-//     const li = event.target.parentElement;
-//     list.removeChild(li)
-//   }
+//   const list = document.querySelector("#lecture-list ul");
+
+//   list.addEventListener("click", function (event) {
+//     if (event.target.className === "remove") {
+//       const li = event.target.parentElement;
+//       list.removeChild(li);
+//     }
+//   });
 // });
