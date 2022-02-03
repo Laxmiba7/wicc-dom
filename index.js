@@ -95,3 +95,62 @@ document.addEventListener("DOMContentLoaded", function (event) {
 //     }
 //   });
 // });
+
+// function promise2() {
+//   return new Promise((resolve, reject) => {
+//     resolve("success");
+//     // reject("failure");
+//   });
+// }
+
+// function promise() {
+//   return new Promise((resolve, reject) => {
+//     resolve(promise2);
+//     // reject("failure");
+//   });
+// }
+
+// console.log(
+//   promise()
+//     .then((res) => {
+//       // console.log(res);
+//     }).then((res2) => {
+//       console.log(res2);
+//     })
+//     .catch((error) => {
+//       // console.log(error);
+//     })
+//   // .finally(fin => {
+//   //   console.log("fin")
+//   // })
+// );
+
+function fetchApi() {
+  return fetch("https://jsonplaceholder.typadasdsadicode.com/todos/1").then((response) =>
+    response.json()
+  );
+  // .then((json) => console.log(json));
+
+  // console.log("response", res);
+  // console.log("test");
+}
+
+async function asyncAwait() {
+  try {
+    return await fetchApi();
+  } catch (error) {
+    throw error;
+  } finally{
+
+  }
+
+  // fetchApi()
+  //   .then((res) => {
+  //     console.log(res);
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //   });
+}
+
+console.log(asyncAwait());
