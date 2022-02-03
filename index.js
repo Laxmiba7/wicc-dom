@@ -143,14 +143,10 @@ async function asyncAwait() {
   
   
     return await fetchApi();
+
+
   } catch (error) {
-  
-  
     throw error;
-  
-  
-  
-  
   } finally{
 
   }
