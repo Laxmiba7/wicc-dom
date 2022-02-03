@@ -146,13 +146,7 @@ async function asyncAwait() {
 
 
   } catch (error) {
-  
-  
     throw error;
-  
-  
-  
-  
   } finally{
 
   }
