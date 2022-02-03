@@ -136,10 +136,20 @@ function fetchApi() {
 }
 
 async function asyncAwait() {
+
+
   try {
+
+
     return await fetchApi();
+
+
   } catch (error) {
+
+
     throw error;
+
+    
   } finally{
 
   }
